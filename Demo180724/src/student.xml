@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<student class="com.hcr.bean.Student">	
+	<name value="zhangsan" type="java.lang.String">
+		
+	</name>
+	<!-- 这个是注释 -->
+	<height type="double">
+		<value>165</value>
+	</height>
+	<!-- <![CDATA[<html><xiaogou>阿黄</xiaogou</html>]] -->
+	<sex>
+		<value>true</value>
+		<type>boolean</type>
+	</sex>
+</student>
