@@ -45,11 +45,11 @@ public class UsbFind {
 	}
 
 
-public static class FilterReducer extends Reducer<LongWritable, Text, String, Text>{
+public static class FilterReducer extends Reducer<LongWritable, Text, DateBean, Text>{
 	
 	@Override
 	protected void reduce(LongWritable key, Iterable<Text> values,
-			Reducer<LongWritable, Text, String, Text>.Context context) throws IOException, InterruptedException {
+			Reducer<LongWritable, Text, DateBean, Text>.Context context) throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
 		//遍历所有行
 		Iterator<Text> it = values.iterator();
@@ -59,10 +59,10 @@ public static class FilterReducer extends Reducer<LongWritable, Text, String, Te
 			//转成string类型
 			 str= new String(by);
 			
-		}
-		String[] split = str.split("|");
+		
+		String[] split = str.split("\\|");
 		//编译正则表达式
-		Pattern pattern = Pattern.compile("(.*id:(0x[A-Fa-f0-9]+).*)|(.*(device(0x[A-Fa-f0-9]+).*)");
+		Pattern pattern = Pattern.compile("(.*id:(0x[A-Fa-f0-9]+).*)|(.*device(0x[A-Fa-f0-9]+).*)");
 		//将第三个元素项与正则表达式匹配
 		Matcher matcher = pattern.matcher(split[2]);
 		DateTimeFormatter dtf = DateTimeFormatter.ISO_DATE_TIME;
@@ -70,12 +70,12 @@ public static class FilterReducer extends Reducer<LongWritable, Text, String, Te
 			//分组，获取第2组和第4组
 			String group2 = matcher.group(2);
 			LocalDateTime ldt = dtf.parse(split[0], LocalDateTime::from);
-			context.write(DateUtils.toDateString(ldt), new Text((group2 != null ? group2 : matcher.group(4))));
+			context.write(new DateBean(ldt), new Text((group2 != null ? group2 : matcher.group(4))));
 
 		}
 
 	}
-
+}
 	
 }
 
@@ -88,13 +88,13 @@ public static void main(String[] args) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	job.setJarByClass(UsbFindId.class);
+	job.setJarByClass(UsbFind.class);
 	job.setMapperClass(FilterMapper.class);
 	job.setMapOutputKeyClass(LongWritable.class);
 	job.setMapOutputValueClass(Text.class);
 	
 	job.setReducerClass(FilterReducer.class);
-	job.setOutputKeyClass(Text.class);
+	job.setOutputKeyClass(DateBean.class);
 	job.setOutputValueClass(Text.class);
 	
 	if (args.length<2){

@@ -52,7 +52,7 @@ public class HDFS {
 		public void testAddFileToHdfs() throws Exception {
 
 			// 要上传的文件所在的本地路径
-			Path src = new Path("D:/Workspaces/vmware.log");
+			Path src = new Path("D:/Workspaces/friends.txt");
 			// 要上传到hdfs的目标路径
 			Path dst = new Path("/wordcount/input");
 			fs.copyFromLocalFile(src, dst);
