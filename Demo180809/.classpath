@@ -6,5 +6,19 @@
 	<classpathentry kind="lib" path="mysql-connector-java-5.1.46-bin.jar"/>
 	<classpathentry kind="lib" path="commons-pool2-2.4.1.jar"/>
 	<classpathentry kind="lib" path="commons-dbcp2-2.1.jar"/>
+	<classpathentry kind="lib" path="spring-beans-4.3.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="spring-context-4.3.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="spring-core-4.3.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="spring-expression-4.3.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="spring-instrument-4.3.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="spring-jdbc-4.3.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="spring-test-4.3.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="spring-tx-4.3.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="commons-dbutils-1.6-javadoc.jar"/>
+	<classpathentry kind="lib" path="commons-dbutils-1.6-sources.jar"/>
+	<classpathentry kind="lib" path="commons-dbutils-1.6-test-sources.jar"/>
+	<classpathentry kind="lib" path="commons-dbutils-1.6-tests.jar"/>
+	<classpathentry kind="lib" path="commons-dbutils-1.6.jar"/>
+	<classpathentry kind="lib" path="commons-logging-1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
