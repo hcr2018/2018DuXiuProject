@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.hcr.studentMapper">
+
+	<!-- 使用结果映射，完成由字段到属性的映射，解决 属性名与查询字段名不相同的问题-->
+	<resultMap type="Student" id="studentMapper">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="age" property="age"/>
+	
+	</resultMap>
+	
+	<!-- #{类的属性名}，parameterType属性可以省略不写 -->
+	<insert id="insertStu" parameterType="Student" >
+		insert into student(name,age,score) values(
+		#{name},#{age},#{score})
+	</insert>
+	
+	<select id="selectStuById" resultMap="studentMapper">
+		<!-- #{}为占位符，可用任意内容填充 -->
+		select id,name,age,score
+		from student where id=#{id}
+	</select>
+</mapper>

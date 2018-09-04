@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- jdbc属性文件 -->
+	<properties resource="jdbc.properties"/>
+	<!-- 给类起别名，注意各标签放置位置 -->
+	<typeAliases>
+		<!-- <typeAlias type="com.hcr.beans.Student" alias="Student"/> -->
+		<!-- 将指定包中所有类的简单类名当作其别名 -->
+		<package name="com.hcr.beans"/>
+	</typeAliases>
+	<!-- 配置maybatis运行环境 -->
+	<environments default="test">
+		<environment id="test">
+			<!-- 使用jdbc事务管理 -->
+			<transactionManager type="JDBC" />
+			<dataSource type="POLLED">
+				<property name="driver" value="${jdbc.driver}"/>
+				<property name="url" value="${jdbc.url}"/>
+				<property name="username" value="${jdbc.username}"/>
+				<property name="password" value="${jdbc.password}"/>
+			</dataSource>			
+		</environment>
+	</environments>
+	
+	<!-- 注册映射文件 -->
+	<mappers>
+		<mapper resource="com/hcr/dao/StudentMapper.xml"/>
+	</mappers>
+</configuration>
